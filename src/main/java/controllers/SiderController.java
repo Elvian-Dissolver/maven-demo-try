@@ -3,6 +3,7 @@ package controllers;
 import domain.Product;
 import domain.User;
 import models.ProductRepository;
+import models.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 @Qualifier
 @RestController
-public class ProductController{
+public class SiderController {
 
+    private UserRepository userRepository;
     private ProductRepository productRepository;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
+    public SiderController(UserRepository userRepository, ProductRepository productRepository) {
+        this.userRepository = userRepository;
         this.productRepository = productRepository;
     }
 
