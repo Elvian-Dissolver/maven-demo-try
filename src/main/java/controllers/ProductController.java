@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Product;
+import domain.User;
 import models.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +19,12 @@ public class ProductController{
     @Autowired
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @GetMapping("/listuser")
+    public List<User> getAllUser() {
+        List<User> users = this.userRepository.findAll();
+        return this.userRepository.findAll();
     }
 
     @GetMapping("/products")
