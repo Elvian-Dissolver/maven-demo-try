@@ -1,41 +1,31 @@
 package models;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+import domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 
-@Table("user")
-public class UserSeeder {
-    @PrimaryKey
-    private int id;
+import java.util.ArrayList;
+import java.util.List;
 
-    private String name;
+public class UserSeeder implements CommandLineRunner {
 
-    private String address;
+    private UserRepository userRepository;
 
-    private int age;
-
-
-    public User(){}
-    public User(int id, String name, String address, int age) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.age = age;
+    @Autowired
+    public UserSeeder(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
-    public String getName() {
-        return name;
-    }
+    @Override
+    public void run(String... args) throws Exception {
+        User Indra = new User(1, "Indra", "Jakarta", 24);
+        User Elvian = new User(2,"Elvian", "Banten", 23);
+        User Ahmad = new User(3, "Ahmad", "Demak", 20);
 
-    public String getAddress() {
-        return address;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public int getId() {
-        return id;
+        List<User> users = new ArrayList();
+        users.add(Indra);
+        users.add(Elvian);
+        users.add(Ahmad);
+        this.userRepository.saveAll(users);
     }
 }
