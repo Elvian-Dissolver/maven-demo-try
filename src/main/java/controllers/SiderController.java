@@ -7,8 +7,7 @@ import models.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Qualifier
@@ -35,5 +34,17 @@ public class SiderController {
         //List<User> users = this.userRepository.findAll();
         List<Product> products = this.productRepository.findAll();
         return products;
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public List<User> create(@RequestBody User user) {
+        userRepository.save(user);
+        return userRepository.findAll();
+    }
+
+    @RequestMapping(value = "/affordable/{age}", method = RequestMethod.GET)
+    public List<User> getAffordable(@PathVariable int age) {
+        //return bookings.stream().filter(x -> x.getPricePerNight() <= price).collect(Collectors.toList());
+        return userRepository.findByAgeLessThan(age);
     }
 }
