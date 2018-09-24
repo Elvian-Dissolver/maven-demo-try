@@ -10,9 +10,15 @@ import java.util.List;
 
 @RestController
 public class ProductController{
+
     private ProductRepository productRepository;
 
     @Autowired
+    public ProductController() {
+       // this();
+    }
+
+
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -20,6 +26,7 @@ public class ProductController{
     @GetMapping("/products")
     public List<Product> getAllProduct() {
         //List<User> users = this.userRepository.findAll();
-        return this.productRepository.findAll();
+        List<Product> products = this.productRepository.findAll();
+        //return this.productRepository.findAll();
     }
 }
