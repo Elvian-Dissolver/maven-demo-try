@@ -1,13 +1,15 @@
-package models;
+package com.models;
 
 
-import domain.Product;
+import com.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ProductSeeder implements CommandLineRunner {
     private ProductRepository productRepository;
 

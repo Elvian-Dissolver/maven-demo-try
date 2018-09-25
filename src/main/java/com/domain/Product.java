@@ -1,5 +1,4 @@
-package domain;
-
+package com.domain;
 
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -7,7 +6,6 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("product")
 public class Product {
     @PrimaryKey
-
     private int id;
 
     private String title;
@@ -19,6 +17,7 @@ public class Product {
     private String price;
 
     private int stock;
+
 
     public Product(){}
     public Product(int id, String title, String description, String image , String price, int stock) {

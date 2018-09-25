@@ -1,11 +1,18 @@
-package domain;
+package com.domain;
 
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
 @Table("user")
 public class User {
     @PrimaryKey
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;
