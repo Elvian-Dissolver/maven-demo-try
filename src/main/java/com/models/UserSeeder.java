@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Component //gk pke jga bsa
 public class UserSeeder implements CommandLineRunner {
 
     private UserRepository userRepository;

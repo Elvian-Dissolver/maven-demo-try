@@ -8,8 +8,4 @@ public class Configuration {
 
    @Bean
     StringProcessor stringProcessor() {return new StringProcessor();}
-
-
-
-
 }

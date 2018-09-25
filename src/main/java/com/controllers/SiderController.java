@@ -46,6 +46,11 @@ public class SiderController {
         return userRepository.findAll();
     }
 
+    @PostMapping
+    public void update(@RequestBody User user){
+        this.userRepository.save(user);
+    }
+
     @RequestMapping(value = "/affordable/{age}", method = RequestMethod.GET)
     public List<User> getAffordable(@PathVariable int age) {
         return userRepository.findByAgeLessThan(age);

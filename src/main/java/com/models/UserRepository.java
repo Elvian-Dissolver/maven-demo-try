@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Repository // bsa smua notasiny
+
 public interface UserRepository extends CassandraRepository<User, Integer> {
     List<User> findByAgeLessThan(int age);
 
