@@ -27,7 +27,7 @@ public class SiderController {
         return stringProcessor.process("oke");
     }
 
-    @GetMapping("/listuser")
+    @GetMapping("/users")
     public List<User> getAllUser() {
         List<User> users = this.userRepository.findAll();
         return users;
@@ -50,10 +50,15 @@ public class SiderController {
     public void insert(@RequestBody User user){
         this.userRepository.insert(user);
     }
-    
+
     @PostMapping
     public void update(@RequestBody User user){
         this.userRepository.save(user);
+    }
+
+    @GetMapping("/user/{id}")
+    public  List<User> getUserbyId(@PathVariable int id){
+        return  this.userRepository.findByIdLessThanEqual(id);
     }
 
     @RequestMapping(value = "/affordable/{age}", method = RequestMethod.GET)
