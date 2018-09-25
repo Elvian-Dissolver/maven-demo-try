@@ -46,6 +46,11 @@ public class SiderController {
         return userRepository.findAll();
     }
 
+    @PutMapping
+    public void insert(@RequestBody User user){
+        this.userRepository.insert(user);
+    }
+    
     @PostMapping
     public void update(@RequestBody User user){
         this.userRepository.save(user);
