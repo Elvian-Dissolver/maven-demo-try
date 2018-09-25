@@ -19,7 +19,7 @@ public class UserSeeder implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
       User Indra = new User(4, "Indra2", "Jakarta", 24 );
 //        User Elvian = new User(2,"Elvian", "Banten", 23);
 //        User Ahmad = new User(3, "Ahmad", "Demak", 20);
