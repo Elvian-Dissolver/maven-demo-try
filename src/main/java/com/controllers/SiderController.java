@@ -62,12 +62,12 @@ public class SiderController {
 
     @GetMapping("/user/{id}")
     public ArrayList<String> getUserbyId(@PathVariable int id){
-        List<User> users = this.userRepository.findByIdLessThanEqual(id);
+        List<User> users = this.userRepository.findByIdLessThan(id);
         String name = users.get(0).getName();
         String address = users.get(0).getAddress();
         String age = String.valueOf(users.get(0).getAge());
 
-        ArrayList<String> aList =  new ArrayList<String>();
+        ArrayList<String> aList =  new ArrayList();
         aList.addAll(Arrays.asList(name,address,age));
         return aList;
 

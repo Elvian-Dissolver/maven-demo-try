@@ -13,8 +13,8 @@ import java.util.List;
 public interface UserRepository extends CassandraRepository<User, Integer> {
     List<User> findByAgeLessThan(int age);
 
-    @Query("SELECT name, address, age FROM user WHERE id=4")
-    List<User> findByIdLessThanEqual(int id);
+    @Query("SELECT name, address, age FROM user WHERE id=?0")
+    List<User> findByIdLessThan(int id);
 }
 
 
