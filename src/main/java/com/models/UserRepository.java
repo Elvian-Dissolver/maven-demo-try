@@ -11,10 +11,10 @@ import java.util.List;
 @Repository // bsa smua notasiny
 
 public interface UserRepository extends CassandraRepository<User, Integer> {
-    List<User> findByAgeLessThan(int age);
 
-    @Query("SELECT name, address, age FROM user WHERE id=?0")
-    List<User> findByIdLessThan(int id);
+
+    @Query("SELECT name, address, age FROM user WHERE id<?0 ALLOW FILTERING")
+    List<User> findByAgeLessThan(int age);
 }
 
 

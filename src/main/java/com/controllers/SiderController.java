@@ -60,22 +60,17 @@ public class SiderController {
         this.userRepository.save(user);
     }
 
-    @GetMapping("/user/{id}")
-    public ArrayList<String> getUserbyId(@PathVariable int id){
-        List<User> users = this.userRepository.findByIdLessThan(id);
+    @GetMapping("/user/{age}")
+    public ArrayList<String> getUserbyId(@PathVariable int age){
+        List<User> users = this.userRepository.findByAgeLessThan(age);
         String name = users.get(0).getName();
         String address = users.get(0).getAddress();
-        String age = String.valueOf(users.get(0).getAge());
+        String ages = String.valueOf(users.get(0).getAge());
 
         ArrayList<String> aList =  new ArrayList();
-        aList.addAll(Arrays.asList(name,address,age));
+        aList.addAll(Arrays.asList(name,address,ages));
         return aList;
 
-    }
-
-    @RequestMapping(value = "/affordable/{age}", method = RequestMethod.GET)
-    public List<User> getAffordable(@PathVariable int age) {
-        return userRepository.findByAgeLessThan(age);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
