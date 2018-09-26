@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.data.cassandra.core.query.Query.query;
@@ -60,9 +61,16 @@ public class SiderController {
     }
 
     @GetMapping("/user/{id}")
-    public List<User> getUserbyId(@PathVariable int id){
+    public ArrayList<String> getUserbyId(@PathVariable int id){
         List<User> users = this.userRepository.findByIdLessThanEqual(id);
-        return users;
+        String name = users.get(0).getName();
+        String address = users.get(0).getAddress();
+        String age = String.valueOf(users.get(0).getAge());
+
+        ArrayList<String> aList =  new ArrayList<String>();
+        aList.addAll(Arrays.asList(name,address,age));
+        return aList;
+
     }
 
     @RequestMapping(value = "/affordable/{age}", method = RequestMethod.GET)
