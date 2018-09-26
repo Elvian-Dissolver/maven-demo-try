@@ -61,15 +61,16 @@ public class SiderController {
     }
 
     @GetMapping("/user/{age}")
-    public ArrayList<String> getUserbyId(@PathVariable int age){
-        List<User> users = this.userRepository.findByAgeLessThan(age);
-        String name = users.get(0).getName();
-        String address = users.get(0).getAddress();
-        String ages = String.valueOf(users.get(0).getAge());
+    public List<User> getUserbyId(@PathVariable int age){
+        List<User> users = this.userRepository.findByAgeLessThanEqual(age);
 
-        ArrayList<String> aList =  new ArrayList();
-        aList.addAll(Arrays.asList(name,address,ages));
-        return aList;
+//        String name = users.get(0).getName();
+//        String address = users.get(0).getAddress();
+//        String ages = String.valueOf(users.get(0).getAge());
+//
+//        ArrayList<String> aList =  new ArrayList();
+//        aList.addAll(Arrays.asList(name,address,ages));
+        return users;
 
     }
 
