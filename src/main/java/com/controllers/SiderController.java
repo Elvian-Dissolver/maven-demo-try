@@ -6,7 +6,10 @@ import com.models.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.data.cassandra.core.query.Query.query;
 
 @RestController
 public class SiderController {
@@ -57,8 +60,9 @@ public class SiderController {
     }
 
     @GetMapping("/user/{id}")
-    public  List<User> getUserbyId(@PathVariable int id){
-        return  this.userRepository.findByIdLessThanEqual(id);
+    public List<User> getUserbyId(@PathVariable int id){
+        List<User> users = this.userRepository.findByIdLessThanEqual(id);
+        return users;
     }
 
     @RequestMapping(value = "/affordable/{age}", method = RequestMethod.GET)
